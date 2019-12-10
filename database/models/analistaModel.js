@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 // instancia um novo schema, que representa o objeto analistas - utilizado no model
 const AnalistasSchema = new mongoose.Schema({
     user: { type: String },
-    password: { type: String },
-    channel: { type: String },
+    password: { type: String }
 },
     {
         timestamps: true,
@@ -13,6 +12,7 @@ const AnalistasSchema = new mongoose.Schema({
             transform: function (doc, ret, options) {
                 ret.id = ret._id;
                 delete ret._id;
+                delete ret.senha;
                 delete ret._v;
                 return ret;
             }

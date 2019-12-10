@@ -2,10 +2,10 @@ const Cliente = require('../database/models/clienteModel');
 const constants = require('../constants');
 const clienteService = require('../service/clienteService');
 
-module.exports.signup = async (req, res) => {
+exports.signup = async (req, res) => {
     let response = { ...constants.defaultServerResponse }
     try {
-        const responseFromService = await userService.signup(req.body);
+        const responseFromService = await clienteService.signup(req.body)
         response.status = 200,
             response.message = constants.clienteAnalistaMessage.SIGNUP_SUCCESS;
         response.body = responseFromService;
@@ -17,10 +17,10 @@ module.exports.signup = async (req, res) => {
 
 }
 
-module.exports.login = async (req, res) => {
+exports.login = async (req, res) => {
     let response = { ...constants.defaultServerResponse }
     try {
-        const responseFromService = await userService.login(req.body);
+        const responseFromService = await clienteService.login(req.body);
         response.status = 200,
             response.message = constants.clienteAnalistaMessage.LOGIN_SUCCESS;
         response.body = responseFromService;
@@ -50,7 +50,7 @@ module.exports.login = async (req, res) => {
 // };
 
 //Returning all cadastros
-exports.findAll = (req, res, next) => {
+exports.findAll = (req, res) => {
     Cliente.find()
         .then(cliente => {
             res.send(cliente)
@@ -62,7 +62,7 @@ exports.findAll = (req, res, next) => {
 };
 
 //Finding a single cadastro by CPF
-exports.getCpf = (req, res, next) => {
+exports.getCpf = (req, res) => {
     Cliente.find({ "cpf": req.params.cpf }, (err, cliente) => {
         if (err) return res.status(500).send(err);
         return res.status(200).send(cliente);
@@ -71,7 +71,7 @@ exports.getCpf = (req, res, next) => {
 };
 
 //Update cadastro por CPF, validating request
-exports.update = (req, res, next) => {
+exports.update = (req, res) => {
     if (!req.body.cpf) {
         return res.status(400).send({
             mensagem: 'Campos do cadastro não podem estar em branco.'
@@ -84,7 +84,7 @@ exports.update = (req, res) => {
     Cliente.updateOne(
         { cpf: req.params.cpf },
         { $set: req.body },
-        { upsert: true },
+        { upsert: false },
     )
         .then(() => {
             return res.status(200).send({ mensagem: 'Cadastro atualizado com sucesso.' })

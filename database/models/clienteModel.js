@@ -23,4 +23,4 @@ const clienteSchema = new mongoose.Schema({
 
 // cria o model Customer
 // este método recebe uma string com o nome do model e um objeto Schemaema);
-module.exports = mongoose.model('Cliente', ClienteSchema)
+module.exports = mongoose.model('Cliente', clienteSchema)

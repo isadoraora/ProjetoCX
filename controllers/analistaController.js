@@ -5,7 +5,7 @@ const analistaService = require('../service/analistaService');
 module.exports.signup = async (req, res) => {
     let response = { ...constants.defaultServerResponse }
     try {
-        const responseFromService = await userService.signup(req.body);
+        const responseFromService = await analistaService.signup(req.body);
         response.status = 200,
             response.message = constants.clienteAnalistaMessage.SIGNUP_SUCCESS;
         response.body = responseFromService;
@@ -20,7 +20,7 @@ module.exports.signup = async (req, res) => {
 module.exports.login = async (req, res) => {
     let response = { ...constants.defaultServerResponse }
     try {
-        const responseFromService = await userService.login(req.body);
+        const responseFromService = await analistaService.login(req.body);
         response.status = 200,
             response.message = constants.clienteAnalistaMessage.LOGIN_SUCCESS;
         response.body = responseFromService;
@@ -49,7 +49,7 @@ module.exports.login = async (req, res) => {
 // };
 
 //Returning all analists cadastros
-exports.findAll = (req, res, next) => {
+exports.findAll = (req, res) => {
     Analista.find()
         .then(analista => {
             res.send(analista)
@@ -61,7 +61,7 @@ exports.findAll = (req, res, next) => {
 };
 
 //Finding a single cadastro by USER
-exports.getUser = (req, res, next) => {
+exports.getUser = (req, res) => {
     Analista.find({ "user": req.params.user }, (err, analista) => {
         if (err) return res.status(500).send(err);
         return res.status(200).send(analista);
@@ -70,7 +70,7 @@ exports.getUser = (req, res, next) => {
 };
 
 //Update cadastro por USER, validating request
-exports.update = (req, res, next) => {
+exports.update = (req, res) => {
     if (!req.body.user) {
         return res.status(400).send({
             mensagem: 'Campos do cadastro não podem estar em branco.'
@@ -83,7 +83,7 @@ exports.update = (req, res) => {
     Analista.updateOne(
         { user: req.params.user },
         { $set: req.body },
-        { upsert: true },
+        { upsert: false },
     )
         .then(() => {
             return res.status(200).send({ mensagem: 'Cadastro atualizado com sucesso.' })

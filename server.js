@@ -20,10 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //importing routes
-const authenticationRoutes = require('./routes/authenticationRoute');
-const analistaRoute = require('./routes/analistaRoute');
-const customerRoute = require('./routes/customerRoute');
-const pesquisaRoute = require('./routes/pesquisaRoute');
+app.use('/cliente', require('./routes/clienteRoute'));
+app.use('/analista', require('./routes/analistaRoute'));
+app.use('/pesquisa', require('./routes/pesquisaRoute'));
 
 const PORT = process.env.PORT || 3000;
 
@@ -40,3 +39,4 @@ app.use(function (err, req, res, next) {
         body: {}
     })
 })
+
