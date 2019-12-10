@@ -83,7 +83,7 @@ exports.update = (req, res) => {
     Analista.updateOne(
         { user: req.params.user },
         { $set: req.body },
-        { upsert: true },
+        { upsert: false }
     )
         .then(() => {
             return res.status(200).send({ mensagem: 'Cadastro atualizado com sucesso.' })
