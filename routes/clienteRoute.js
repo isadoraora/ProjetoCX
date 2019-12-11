@@ -1,8 +1,9 @@
-const express = require('express'),
+const express = require('express');
 const router = express.Router();
 const clienteController = require('../controllers/clienteController');
 const joiSchemaValidation = require('../middleware/joiSchemaValidation');
 const clienteSchema = require('../apiSchema/clienteSchema');
+const tokenValidation = require('../middleware/tokenValidation');
 
 //signup route validation
 router.post('/signup',
@@ -17,15 +18,6 @@ router.post('/login',
 );
 
 //Retrieving all cadastros
-router.get('/cliente', cliente.findAll);
-
-//Retrieve only one specific cadastro by CPF
-router.get('/cliente/:cpf', cliente.getCpf);
-
-//Update a cadastri
-router.put('/cliente/:cpf', cliente.update);
-
-//Deleting a cadastro
-router.delete('/cliente/:cpf', cliente.delete);
+router.get('/', clienteController.findAll)
 
 module.exports = router;

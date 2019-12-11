@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports.validateToken = (req, res, next) => {
     let response = { ...constants.defaultServerResponse };
     try {
-        (!req.headers.authorization){
+        if (!req.headers.authorization) {
             throw new Error(constants.requestValidationMessage.TOKEN_MISSING)
         }
         const token = req.headers.authorization.split('Bearer')[1].trim(); //trim para limpar o texto no console

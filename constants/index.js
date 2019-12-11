@@ -14,6 +14,7 @@ module.exports = {
     clienteAnalistaMessage: {
         SIGNUP_SUCCESS: 'Signup com sucesso!',
         LOGIN_SUCCESS : 'Login com sucesso!',
+        CLIENTE_FETCHED : 'Pesquisa realizada com sucesso!',
         DUPLICATE_EMAIL: 'Este email já está sendo utilizado',
         USER_NOT_FOUND: 'Usuário não localizado!',
         INVALID_PASSWORD: 'Senha incorreta!'

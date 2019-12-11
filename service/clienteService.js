@@ -4,7 +4,7 @@ const { formatMongoData } = require('../helper/dbHelper');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-module.exports.signup = async ({ email, senha }) => {
+module.exports.signup = async ({ email, senha}) => {
     try {
         const cliente = await Cliente.findOne({ email })
         if (cliente) {
@@ -21,7 +21,7 @@ module.exports.signup = async ({ email, senha }) => {
     }
 }
 
-module.exports.login = async ({ email, senha }) => {
+module.exports.login = async ({ email, senha}) => {
     try {
         const cliente = await Cliente.findOne({ email })
         if (!cliente) {

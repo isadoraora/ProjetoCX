@@ -17,14 +17,14 @@ app.use(cors());
 
 //request payload middleware
 app.use(express.urlencoded({ extended: true }));
-//request content-type app/json. it helps parsing the content into json file
-app.use(express.json());
 
 //importing routes
-const authenticationRoutes = require('./routes/authenticationRoute');
-const analistaRoute = require('./routes/analistaRoute');
-const customerRoute = require('./routes/customerRoute');
-const pesquisaRoute = require('./routes/pesquisaRoute');
+const cliente = require('./routes/clienteRoute')
+const analista = require('./routes/analistaRoute')
+const pesquisa = require('./routes/pesquisaRoute')
+
+//request content-type app/json. it helps parsing the content into json file
+app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
@@ -41,3 +41,8 @@ app.use(function (err, req, res, next) {
         body: {}
     })
 })
+
+app.use('/', cliente)
+app.use('/analista', analista)
+app.use('/pesquisa', pesquisa)
+

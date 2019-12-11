@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 //caracteristicas customer
 // instancia um novo schema, que representa o objeto customer - utilizado no model
 const clienteSchema = new mongoose.Schema({
-    email: { type: String},
-    senha: { type: String},
-    nome: { type: String},
-    cpf: { type: Number}
+    email: String,
+    senha: String
 },
     {
         timestamps: true,
@@ -21,6 +19,6 @@ const clienteSchema = new mongoose.Schema({
         }
     });
 
-// cria o model Customer
+// cria o model Cliente
 // este método recebe uma string com o nome do model e um objeto Schemaema);
-module.exports = mongoose.model('Cliente', ClienteSchema)
+module.exports = mongoose.model('Cliente', clienteSchema)

@@ -27,7 +27,8 @@ module.exports.login = async ({ user, password }) => {
         if (!analista) {
             throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND);
         }
-        const isValid = await bcryptjs.compare(password, user.password)
+        console.log(analista.password)
+        const isValid = await bcryptjs.compare(password, analista.password)
         if (!isValid) {
             throw new Error(constants.clienteAnalistaMessage.INVALID_PASSWORD)
         }
