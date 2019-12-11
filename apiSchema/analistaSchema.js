@@ -9,3 +9,7 @@ module.exports.login = Joi.object().keys({
     user: Joi.string().required(),
     password: Joi.string().required()
 });
+module.exports.getAllAnalists = Joi.object().keys({
+    user: Joi.string().required(),
+    password: Joi.string().required()
+})

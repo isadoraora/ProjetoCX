@@ -1,10 +1,10 @@
 const Cliente = require('../database/models/clienteModel');
 const constants = require('../constants');
-const { formatMongoData } = require('../helper/dbHelper');
+const { formatMongoData, checkObjectId } = require('../helper/dbHelper');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-module.exports.signup = async ({ email, senha}) => {
+module.exports.signup = async ({ email, senha }) => {
     try {
         const cliente = await Cliente.findOne({ email })
         if (cliente) {
@@ -21,7 +21,7 @@ module.exports.signup = async ({ email, senha}) => {
     }
 }
 
-module.exports.login = async ({ email, senha}) => {
+module.exports.login = async ({ email, senha }) => {
     try {
         const cliente = await Cliente.findOne({ email })
         if (!cliente) {
@@ -37,5 +37,48 @@ module.exports.login = async ({ email, senha}) => {
     } catch (error) {
         console.log(`Algo deu errado: Serviço: login`, error)
         throw new Error(error);
+    }
+}
+module.exports.getClientById = async ({ id }) => {
+    try {
+        checkObjectId(id)
+        let cliente = await Cliente.findById(id);
+        if (!cliente) {
+            throw new Error(constants.clienteAnalistaMessage.CLIENT_NOT_FOUND)
+        }
+        return formatMongoData(cliente);
+    } catch (error) {
+        console.log('Algo deu errado: Service: getClientById', error)
+        throw new Error(error)
+    }
+}
+module.exports.updateClient = async ({ id, updateInfo }) => {
+    try {
+        checkObjectId(id)
+        let cliente = await Cliente.findOneAndUpdate(
+            { _id: id },
+            updateInfo,
+            { new: true }
+        )
+        if (!cliente) {
+            throw new Error(constants.clienteAnalistaMessage.CLIENT_UPDATED)
+        }
+        return formatMongoData(cliente);
+    } catch (error) {
+        console.log("Algo deu errado: Service: updateClient", error)
+        throw new Error(error)
+    }
+}
+module.exports.deleteClient = async ({ id }) => {
+    try {
+        checkObjectId(id)
+        let cliente = await Cliente.findByIdAndDelete(id);
+        if (!cliente) {
+            throw new Error(constants.clienteAnalistaMessage.CLIENT_DELETED)
+        }
+        return formatMongoData(cliente);
+    } catch (error) {
+        console.log('Algo deu errado: Service: deleteClient', error)
+        throw new Error(error)
     }
 }

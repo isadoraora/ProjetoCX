@@ -5,7 +5,6 @@ const PesquisaSchema = new mongoose.Schema({
     email: { type: String },
     senha: { type: String },
     quemTeAtendeu: { type: String },
-    canalAtendimento: { type: String }, //????o mesmo analista pode trab em +de 1 canal????
     notaAtendimento: { type: Number },
     voltariaFazerNegocio: { type: Boolean },
     indicariaParaAmigo: { type: Boolean } // aqui e em cima pra conseguirmos calcular NPS.
@@ -17,6 +16,7 @@ const PesquisaSchema = new mongoose.Schema({
                 ret.id = ret._id;
                 delete ret._id;
                 delete ret._v;
+                delete senha;
                 return ret;
             }
         }

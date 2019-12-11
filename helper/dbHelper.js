@@ -12,7 +12,7 @@ module.exports.formatMongoData = (data) => {
     return data.toObject();
 }
 
-module.exports.checkById = (id) => {
+module.exports.checkObjectId = (id) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
         throw new Error(constants.databaseMessage.INVALID_ID)
     }

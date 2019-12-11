@@ -15,15 +15,15 @@ router.post('/login',
 );
 
 //Retrieving all cadastros
-router.get('/analista', analistaController.findAll);
+router.get('/', analistaController.getAllAnalists);
 
-//Retrieve only one specific cadastro by USER
-router.get('/analista/:user', analistaController.getUser);
+//Retrieve only one specific analist by user
+router.get('/:user', analistaController.getAnalistByUser);
 
-//Update a cadastri
-router.put('/analista/:user', analistaController.update);
+//Update analist by ID
+router.put('/:id', analistaController.updateAnalist);
 
-//Deleting a cadastro by its USER
-router.delete('/analista/:user', analistaController.delete);
+//Deleting a cadastro by ID from mongoDB
+router.delete('/:id', analistaController.deleteAnalist);
 
 module.exports = router;

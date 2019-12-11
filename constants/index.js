@@ -17,6 +17,11 @@ module.exports = {
         CLIENTE_FETCHED : 'Pesquisa realizada com sucesso!',
         DUPLICATE_EMAIL: 'Este email já está sendo utilizado',
         USER_NOT_FOUND: 'Usuário não localizado!',
+        USER_UPDATED: 'Usuário atualizado com sucesso!',
+        USER_DELETED: 'Usuário deletado!',
+        CLIENT_UPDATED : 'Cliente atualizado!',
+        CLIENT_DELETED: 'Cliente deletado!',
+        CLIENT_NOT_FOUND: 'Cliente não localizado!',
         INVALID_PASSWORD: 'Senha incorreta!'
     },
     requestValidationMessage: {

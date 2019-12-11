@@ -3,7 +3,6 @@ const router = express.Router();
 const clienteController = require('../controllers/clienteController');
 const joiSchemaValidation = require('../middleware/joiSchemaValidation');
 const clienteSchema = require('../apiSchema/clienteSchema');
-const tokenValidation = require('../middleware/tokenValidation');
 
 //signup route validation
 router.post('/signup',
@@ -19,5 +18,14 @@ router.post('/login',
 
 //Retrieving all cadastros
 router.get('/', clienteController.findAll)
+
+//Finding Client byId
+router.get('/:id', clienteController.getClientById)
+
+//updating client ById
+router.put('/:id', clienteController.updateClient)
+
+//delete client byID
+router.delete('/:id', clienteController.deleteClient)
 
 module.exports = router;
