@@ -41,7 +41,8 @@ app.use(function (err, req, res, next) {
         body: {}
     })
 })
-
+app.use('/ping')
+res.status(200).send({message:"ola"})
 app.use('/', cliente)
 app.use('/analista', analista)
 app.use('/pesquisa', pesquisa)
