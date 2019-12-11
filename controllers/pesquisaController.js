@@ -19,3 +19,15 @@ module.exports.createPesquisa = async (req, res) => {
 //preciso verificar se o analisa recebeu nota, se sim, somar todas e dividir pela quantidade. Então retorno a media
 //se o cara não teve nota nenhuma aparece como Sem Avaliações
 //rodar o cron
+
+//get notas de um analista especifico e calcula a media
+module.exports.getMediaAnalista = (req, res) => {
+    const user = req.params.user
+    const analista = Pesquisa.find(i => i.user == user)
+    if (!analista) {
+        res.send('Pesquisa desse analista não foi encontrada')
+    }
+    const notasAnalista = Pesquisa.notaAtendimento
+    const nomesComNota = notasAnalista.map(notaAtendimento => notaAtendimento.user)
+    res.status(200).send(nomesComNota)
+}
