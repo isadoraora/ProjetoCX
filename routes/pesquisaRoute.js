@@ -6,7 +6,10 @@ const pesquisaController = require('../controllers/pesquisaController');
 //creating pesquisa
 router.post('/', pesquisaController.createPesquisa);
 
-//get notas de um analista especifico pelo User
-router.get('/nota', pesquisaController.getMediaAnalista)
+//get pesquisa de um analista pelo 'quemTeAtendeu'
+router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
+
+//get nota do analista
+router.get('/nota/:quemTeAtendeu', pesquisaController.getNotaFromAnalista);
 
 module.exports = router;
