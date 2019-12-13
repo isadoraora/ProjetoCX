@@ -1,8 +1,9 @@
 const express = require('express');
 const dotEnv = require('dotenv');
 const cors = require('cors');
-const dbconnection = require('./database/connection');
+const dbconnection = require('./src/database/connection');
 const cron = require('node-cron');
+const path = require('path');
 
 //looks for a file in your project .env that knows the port is available
 dotEnv.config();
@@ -19,9 +20,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 //importing routes
-const cliente = require('./routes/clienteRoute')
-const analista = require('./routes/analistaRoute')
-const pesquisa = require('./routes/pesquisaRoute')
+const cliente = require('./src/routes/clienteRoute')
+const analista = require('./src/routes/analistaRoute')
+const pesquisa = require('./src/routes/pesquisaRoute')
 
 //request content-type app/json. it helps parsing the content into json file
 app.use(express.json());
@@ -45,5 +46,10 @@ app.use(function (err, req, res, next) {
 app.use('/cliente', cliente)
 app.use('/analista', analista)
 app.use('/pesquisa', pesquisa)
+app.use(express.static('doc'));
+app.get('/api-doc', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../doc/index.html'))
+})
+
 
 module.exports = app;

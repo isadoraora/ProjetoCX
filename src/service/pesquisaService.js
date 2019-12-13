@@ -35,24 +35,51 @@ module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) 
             throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
         }
         const nota = await Pesquisa.find({ quemTeAtendeu }, { notaAtendimento: 1 })
-        const somaNota = await Pesquisa.aggregate([
+        const calculaNota = await Pesquisa.aggregate([
+            { $match: { quemTeAtendeu: quemTeAtendeu } },
             {
                 $group:
                 {
                     _id: quemTeAtendeu,
-                    total: {
-                        $sum: "$notaAtendimento"
-                    },
-                    count: { $sum: 1 }
+                    media: { $avg: "$notaAtendimento" },
+                    quantidadePesquisas: { $sum: 1 }
                 }
             }
         ])
-        return somaNota;
+        return calculaNota;
 
     } catch (error) {
-        console.log('Something went wrong: Service : getNotaFromAnalista', error)
+        console.log('Algo deu errado: Service : getNotaFromAnalista', error)
         throw new Error(error)
     }
 
 }
+module.exports.getMediaAnalistas = async ({ quemTeAtendeu, notaAtendimento }) => {
+    try {
 
+        let analista = await Pesquisa.find({ quemTeAtendeu })
+        console.log(analista)
+        if (!analista) {
+            throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
+        }
+        const nota = await Pesquisa.find({ quemTeAtendeu }, { notaAtendimento: 1 })
+        console.log(nota)
+        const calculaNota = await Pesquisa.aggregate([
+            { $match: { quemTeAtendeu: quemTeAtendeu } },
+            {
+                $group:
+                {
+                    _id: quemTeAtendeu,
+                    media: { $avg: "$notaAtendimento" },
+                    quantidadePesquisas: { $sum: 1 }
+                }
+            }
+        ])
+        return calculaNota;
+
+    } catch (error) {
+        console.log('Algo deu errado: Service : getNotaFromAnalistas', error)
+        throw new Error(error)
+    }
+
+}
