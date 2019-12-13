@@ -27,6 +27,7 @@ module.exports.getAnalistaByNameFromPesquisa = async ({ quemTeAtendeu }) => {
 
 }
 
+//get nota de um analista passando o nome dele como params
 module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) => {
     try {
 
@@ -41,7 +42,7 @@ module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) 
                 $group:
                 {
                     _id: quemTeAtendeu,
-                    media: { $avg: "$notaAtendimento" },
+                    Media: { $avg: "$notaAtendimento" },
                     quantidadePesquisas: { $sum: 1 }
                 }
             }
@@ -54,32 +55,23 @@ module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) 
     }
 
 }
+//get media de cada analista 
 module.exports.getMediaAnalistas = async ({ quemTeAtendeu, notaAtendimento }) => {
     try {
-
-        let analista = await Pesquisa.find({ quemTeAtendeu })
-        console.log(analista)
-        if (!analista) {
-            throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
-        }
-        const nota = await Pesquisa.find({ quemTeAtendeu }, { notaAtendimento: 1 })
-        console.log(nota)
-        const calculaNota = await Pesquisa.aggregate([
-            { $match: { quemTeAtendeu: quemTeAtendeu } },
+        const pesquisa = await Pesquisa.aggregate([
             {
-                $group:
-                {
-                    _id: quemTeAtendeu,
-                    media: { $avg: "$notaAtendimento" },
-                    quantidadePesquisas: { $sum: 1 }
+                $project: {
+                    Nome: "$quemTeAtendeu",
+                    Nota:{$avg: "$notaAtendimento"}
                 }
             }
         ])
-        return calculaNota;
-
+        return pesquisa;
     } catch (error) {
         console.log('Algo deu errado: Service : getNotaFromAnalistas', error)
         throw new Error(error)
     }
 
 }
+// const atendente = await Pesquisa.distinct("quemTeAtendeu" )
+//         return atendente;

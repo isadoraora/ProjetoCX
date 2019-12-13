@@ -4,6 +4,10 @@ const { formatMongoData, checkObjectId } = require('../helper/dbHelper');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+function generateToken(params = {}) {
+    return jwt.sign(params, process.env.SECRET_KEY || 'my-secret-key', { expiresIn: 86400 });
+}
+
 module.exports.signup = async ({ email, senha }) => {
     try {
         const cliente = await Cliente.findOne({ email })
@@ -14,7 +18,10 @@ module.exports.signup = async ({ email, senha }) => {
         const newCliente = new Cliente({ email, senha });
         let result = await newCliente.save();
 
-        return formatMongoData(result);
+        return ({
+            result,
+            token: generateToken()
+        })
     } catch (error) {
         console.log(`Algo deu errado: Serviço: signup`, error)
         throw new Error(error);
@@ -25,15 +32,13 @@ module.exports.login = async ({ email, senha }) => {
     try {
         const cliente = await Cliente.findOne({ email })
         if (!cliente) {
-            throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND);
+            throw new Error(constants.clienteAnalistaMessage.CLIENT_NOT_FOUND);
         }
         const isValid = await bcryptjs.compare(senha, cliente.senha)
         if (!isValid) {
             throw new Error(constants.clienteAnalistaMessage.INVALID_PASSWORD)
         }
-        const token = jwt.sign({ id: cliente._id }, process.env.SECRET_KEY || 'my-secret-key', { expiresIn: '1d' });
-        return { token };
-
+        return ({ cliente, token: generateToken({ id: cliente._id }) })
     } catch (error) {
         console.log(`Algo deu errado: Serviço: login`, error)
         throw new Error(error);

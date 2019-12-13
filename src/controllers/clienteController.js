@@ -1,6 +1,7 @@
 const Cliente = require('../database/models/clienteModel');
 const constants = require('../constants');
 const clienteService = require('../service/clienteService');
+const tokenValidation = require('../middleware/tokenValidation')
 
 exports.signup = async (req, res) => {
     let response = { ...constants.defaultServerResponse }

@@ -2,18 +2,22 @@ const express = require('express');
 const router = express.Router();
 const pesquisaSchema = require('../apiSchema/pesquisaSchema');
 const pesquisaController = require('../controllers/pesquisaController');
+const tokenValidation = require('../middleware/tokenValidation');
 
 //creating pesquisa
-router.post('/', pesquisaController.createPesquisa);
+router.post('/', 
+tokenValidation.validateToken,
+pesquisaController.createPesquisa);
+
+//get Media de todos os analistas 
+router.get('/notas', pesquisaController.getMediaAnalistas);
 
 //get pesquisa de um analista pelo 'quemTeAtendeu'
 router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
 
-//get Media de todos os analistas 
-router.get('/nota', pesquisaController.getMediaAnalistas);
-
 //get nota do analista
 router.get('/:quemTeAtendeu/nota', pesquisaController.getNotaFromAnalista);
+
 
 
 /**

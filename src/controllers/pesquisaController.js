@@ -44,6 +44,7 @@ module.exports.getNotaFromAnalista = async (req, res) => {
     }
     return res.status(response.status).send(response);
 }
+
 //get media de todos analistas
 module.exports.getMediaAnalistas = async (req, res) => {
     let response = { ...constants.defaultServerResponse }
