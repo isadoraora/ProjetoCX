@@ -66,7 +66,7 @@ module.exports.updateClient = async ({ id, updateInfo }) => {
             { new: true }
         )
         if (!cliente) {
-            throw new Error(constants.clienteAnalistaMessage.CLIENT_UPDATED)
+            throw new Error(constants.clienteAnalistaMessage.CLIENT_NOT_UPDATED)
         }
         return formatMongoData(cliente);
     } catch (error) {

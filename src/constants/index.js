@@ -7,8 +7,6 @@ module.exports = {
     pesquisaMessage: {
         PESQUISA_CREATED: 'Pesquisa criada com sucesso!',
         PESQUISA_FETCHED: 'Pesquisa realizada com sucesso!',
-        PESQUISA_UPDATED: 'Pesquisa atualizada com Sucesso!',
-        PESQUISA_DELETED: 'Pesquisa deletada com sucesso!',
         PESQUISA_NOT_FOUND: 'Pesquisa não encontrada!',
     },
     clienteAnalistaMessage: {
@@ -21,6 +19,7 @@ module.exports = {
         USER_UPDATED: 'Usuário atualizado com sucesso!',
         USER_DELETED: 'Usuário deletado!',
         CLIENT_UPDATED : 'Cliente atualizado!',
+        CLIENT_NOT_UPDATED : 'Cliente não atualizado, tente novamente!',
         CLIENT_DELETED: 'Cliente deletado!',
         CLIENT_NOT_FOUND: 'Cliente não localizado!',
         INVALID_PASSWORD: 'Senha incorreta!'

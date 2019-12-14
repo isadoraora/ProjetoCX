@@ -5,44 +5,100 @@ const pesquisaController = require('../controllers/pesquisaController');
 const tokenValidation = require('../middleware/tokenValidation');
 
 //creating pesquisa
-router.post('/', 
-tokenValidation.validateToken,
-pesquisaController.createPesquisa);
-
-//get Media de todos os analistas 
-router.get('/notas', pesquisaController.getMediaAnalistas);
-
-//get pesquisa de um analista pelo 'quemTeAtendeu'
-router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
-
-//get nota do analista
-router.get('/:quemTeAtendeu/nota', pesquisaController.getNotaFromAnalista);
-
-
-
+router.post('/',
+    tokenValidation.validateToken,
+    pesquisaController.createPesquisa);
 /**
- * @api {get} /user/:id Request User information
- * @apiName GetUser
- * @apiGroup User
+ * @api {post} /pesquisa Create pesquisa from client
+ * @apiGroup Pesquisa
  *
- * @apiParam {Number} id Users unique ID.
- *
- * @apiSuccess {String} firstname Firstname of the User.
- * @apiSuccess {String} lastname  Lastname of the User.
+ * @apiSuccess {String} status Mensagem de acesso autorizado.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "firstname": "John",
- *       "lastname": "Doe"
- *     }
- *
- * @apiError UserNotFound The id of the User was not found.
+    "status": 200,
+    "message": "Pesquisa criada com sucesso!",
+    }
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
+ *     HTTP/1.1 400 DUPLICATE_EMAIL
+ *  {
+    "status": 400,
+    "message": "Campos inválidos!",
+ *     }
+ */
+
+
+//get Nota de todos os analistas 
+router.get('/notas', pesquisaController.getMediaAnalistas);
+/**
+ * @api {get} /pesquisa/notas Get notas from analists
+ * @apiGroup Pesquisa
+ *
+ * @apiSuccess {String} status Mensagem de acesso autorizado.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
  *     {
- *       "error": "UserNotFound"
+    "status": 200,
+    "message": "Pesquisa realizada com sucesso!",
+    }
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 400 DUPLICATE_EMAIL
+ *  {
+    "status": 400,
+    "message": "Campos inválidos!",
+ *     }
+ */
+
+
+//get pesquisa de um analista pelo 'quemTeAtendeu'
+router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
+/**
+ * @api {get} /pesquisa/:quemTeAtendeu Get pesquisas from that analist
+ * @apiGroup Pesquisa
+* @apiParam {:quemTeAtendeu} user being evaluated
+ *
+ * @apiSuccess {String} status Mensagem de acesso autorizado.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+    "status": 200,
+    "message": "Atendente localizado com sucesso!",
+    }
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 400 DUPLICATE_EMAIL
+ *  {
+    "status": 400,
+    "message": "Campos inválidos!",
+ *     }
+ */
+
+//get nota do analista
+router.get('/:quemTeAtendeu/nota', pesquisaController.getNotaFromAnalista);
+/**
+ * @api {get} /pesquisa/:quemTeAtendeu/nota Get media from analists
+ * @apiGroup Pesquisa
+  * @apiParam {:quemTeAtendeu} user being evaluated
+ *
+ * @apiSuccess {String} status Mensagem de acesso autorizado.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+    "status": 200,
+    "message": "Pesquisa realizada com sucesso!",
+    }
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 400 DUPLICATE_EMAIL
+ *  {
+    "status": 400,
+    "message": "Campos inválidos!",
  *     }
  */
 
