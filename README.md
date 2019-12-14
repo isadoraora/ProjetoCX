@@ -1,7 +1,6 @@
 Projeto Final | Back-end | {reprograma} + Mercado Livre | Dezembro de 2019
 
 Objetivo
-
 Há algum tempo, quando ainda não sabia nada de códigos, trabalhei em uma empresa que tinha 3 canais de Customer Experience, chat, telefone e e-mail. Nos três a análise dos indicadores, inclusive do NPS, era gerado de forma manual, em uma planilha Excel. 
 Ao longo do dia as coordenadoras de cada departamento gritavam as notas dos analistas de atendimento, que elas mesmo extraíam das ferramentas de telecom, e tratavam no Excel. Muitas vezes, muitas mesmo, esse número não batia e era aquela loucura. 
 Além disso era desconfortável ouvir a nota de cada um deles, e as broncas que levavam na frente de todos. 
@@ -9,7 +8,6 @@ Decidi então trazer esse case real pro meu projeto final. Minha API faz cadastr
 Isso faz com que o próprio analista insista ao cliente que o ajude, respondendo uma breve pesquisa. 
 
 Rotas/EndPoints
-
 POST /ciente/signup Rota que realiza o registro de um novo cliente.
 POST /analista/signup Rota que realiza o registro de um novo analista de atendimento.
 POST /pesquisa/ Rota que cria e salva uma pesquisa, respondida apenas pelo cliente. 
@@ -43,8 +41,7 @@ Token JWT
 Mongoose
 Nodemon
 
-Sobre mim
-
+Sobre mim :)
 Isadora Mendonça de Oliveira, formada em Tradução e Interpretação lá em 2010, e que em 2015 descobriu sua paixão em códigos. Cursei Análise e Desenvolvimento, mas acabei indo para a área de Business Intelligence. Neste ano resolvi migrar de fato para a área de backend. Estudante da {reprograma} e nas hora vagas estudando front-end para em um futuro próximo me tornar Desenvolvedora Fullstack. 
 
 Caso tenha algum dúvida sobre meu projeto, ou sobre minha trajetória => isa.mdeo@gmail.com
