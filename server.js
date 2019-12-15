@@ -4,14 +4,18 @@ const cors = require('cors');
 const dbconnection = require('./src/database/connection');
 const cron = require('node-cron');
 const path = require('path');
+const app = express();
+const bodyParser = require('body-parser')
 
 //looks for a file in your project .env that knows the port is available
 dotEnv.config();
 
-const app = express();
-
 //db connection
 dbconnection();
+
+//ejs como view engine
+app.set('view engine','ejs')
+app.set('views','./src/views')
 
 //cors configuration, its important to REST API to not get origin errors
 app.use(cors());
@@ -23,10 +27,11 @@ app.use(express.urlencoded({ extended: true }));
 const cliente = require('./src/routes/clienteRoute')
 const analista = require('./src/routes/analistaRoute')
 const pesquisa = require('./src/routes/pesquisaRoute')
+const media = require('./index')
 
 //request content-type app/json. it helps parsing the content into json file
 app.use(express.json());
-
+app.use(bodyParser.json())
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
@@ -42,14 +47,14 @@ app.use(function (err, req, res, next) {
         body: {}
     })
 })
-
-app.use('/cliente', cliente)
-app.use('/analista', analista)
-app.use('/pesquisa', pesquisa)
 app.use(express.static('doc'));
 app.get('/api-doc', (req, res) => {
     res.sendFile(path.join(__dirname + '/../doc/index.html'))
 })
 
+app.use('/cliente', cliente)
+app.use('/analista', analista)
+app.use('/pesquisa', pesquisa)
+app.use('/media', media)
 
 module.exports = app;

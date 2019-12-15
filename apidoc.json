@@ -1,7 +1,10 @@
 {
-  "name": "API - Pesquisa de Satisfação(Customer Experience)",
-  "version": "0.1.0",
-  "description": "ApiDoc sobre API - Cálculo de Média dos analistas de atendimento",
+  "name": "Documentação API - Repograma + Mercado Livre",
+  "version": "1.0.0",
+  "description": "API - Cálculo de Média dos analistas de atendimento",
   "title": "CX - apiDoc - Isadora",
-  "url": "https://github.com/isadoraora/ProjetoCX"
+  "url": "https://github.com/isadoraora/ProjetoCX",
+  "template": {
+    "forceLanguage": "en"
+  }
 }

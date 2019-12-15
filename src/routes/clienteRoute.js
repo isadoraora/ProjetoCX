@@ -12,8 +12,9 @@ router.post('/signup',
 /**
  * @api {post} /cliente/signup
  * @apiGroup Cliente
- *
- * @apiSuccess {String} status Mensagem de acesso autorizado.
+ * 
+ * @apiParam (Request Body) {String} email E-mail do cliente.
+ * @apiParam (Request Body) {String} senha Senha do cliente.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -40,6 +41,10 @@ router.post('/login',
  * @apiGroup Cliente
  *
  * @apiSuccess {String} status Mensagem de acesso autorizado.
+ * 
+ * @apiParam (Request Body) {String} email E-mail do cliente.
+ * @apiParam (Request Body) {String} senha Senha do cliente.
+ *
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -61,17 +66,21 @@ router.post('/login',
 router.get('/', clienteController.findAll)
 
 /**
- * @api {get} /cliente Retorna todos
+ * @api {get} /cliente 
  * @apiGroup Cliente
  *
- * @apiSuccess {String} status Mensagem de acesso autorizado.
+ * @apiSuccess {String} clientes Lista de clientes cadastrados.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {
-    "status": 200,
-    "message": "Pesquisa realizada com sucesso!",
-    }
+ *    {
+        "_id": "5defe26c88f2170290ebab8d",
+        "email": "maedaisa@gmail.com",
+        "senha": "$2a$12$XPf.ccrEqxuTQKqi/YfCOOaE9u/XSj/s6Xp5G3BMq.vC0cd/aDxR6",
+        "createdAt": "2019-12-10T18:22:36.420Z",
+        "updatedAt": "2019-12-10T18:22:36.420Z",
+        "__v": 0
+    },
  *
  */
 
@@ -81,14 +90,20 @@ router.get('/:id', clienteController.getClientById)
  * @api {get} /analista/:id Get client id
  * @apiGroup Cliente
  * @apiParam {:id} id Client unique ID.
- * @apiSuccess {String} status Mensagem de acesso autorizado.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
     "status": 200,
     "message": "Pesquisa realizada com sucesso!",
+    "body": {
+        "email": "maedaisa@gmail.com",
+        "createdAt": "2019-12-10T18:22:36.420Z",
+        "updatedAt": "2019-12-10T18:22:36.420Z",
+        "__v": 0,
+        "id": "5defe26c88f2170290ebab8d"
     }
+}
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 CLIENT_NOT_FOUND
@@ -104,7 +119,8 @@ router.put('/:id', clienteController.updateClient)
  * @api {put} /cliente/:id Update client info
  * @apiGroup Cliente
  * @apiParam {:id} id Client unique ID.
- * @apiSuccess {String} status Mensagem de acesso autorizado.
+ * @apiParam (Request Body) {String} email E-mail do cliente.
+ * @apiParam (Request Body) {String} senha Senha do cliente.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -128,7 +144,8 @@ router.delete('/:id', clienteController.deleteClient)
  * @api {delete} /cliente/:id Delete client info
  * @apiGroup Cliente
  * @apiParam {:id} id Client unique ID.
- * @apiSuccess {String} status Mensagem de acesso autorizado.
+ * @apiParam (Request Body) {String} email E-mail do cliente.
+ * @apiParam (Request Body) {String} senha Senha do cliente.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
