@@ -1,10 +1,13 @@
 const Pesquisa = require('../database/models/pesquisaModel')
+// const Cliente = require('../database/models/clienteModel')
+// const Analista = require('../database/models/analistaModel')
 const { formatMongoData } = require('../helper/dbHelper')
+const bcryptjs = require('bcryptjs')
 const constants = require('../constants')
 
 module.exports.createPesquisa = async (serviceData) => {
     try {
-        let pesquisa = new Pesquisa({ ...serviceData });
+        let pesquisa = new Pesquisa({ ...serviceData })
         let result = await pesquisa.save();
         return formatMongoData(result);
     } catch (error) {
@@ -13,6 +16,7 @@ module.exports.createPesquisa = async (serviceData) => {
     }
 
 }
+
 module.exports.getAnalistaByNameFromPesquisa = async ({ quemTeAtendeu }) => {
     try {
         let pesquisa = await Pesquisa.find({ quemTeAtendeu })
@@ -69,3 +73,21 @@ module.exports.getMediaAnalistas = async function () {
         throw new Error(error)
     }
 }
+
+       // const cliente = await Cliente.findOne({ email })
+        // if (!cliente) {
+        //     throw new Error(constants.clienteAnalistaMessage.CLIENT_NOT_FOUND);
+        // }
+        // const isValid = await bcryptjs.compare(email, cliente.email)
+        // if (isValid) {
+        //     throw new Error(constants.clienteAnalistaMessage.INVALID_EMAIL)
+        // }
+        // const analista = await Pesquisa.findOne({ user })
+        //  console.log(analista)
+        // if (!analista) {
+        //     throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
+        // }
+        // const isAnalistaValid = await bcryptjs.compare(quemTeAtendeu, analista.user)
+        // if (!isAnalistaValid) {
+        //     throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
+        // }

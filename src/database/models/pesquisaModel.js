@@ -15,7 +15,6 @@ const PesquisaSchema = new mongoose.Schema({
                 ret.id = ret._id;
                 delete ret._id;
                 delete ret._v;
-                delete senha;
                 return ret;
             }
         }

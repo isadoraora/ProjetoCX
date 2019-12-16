@@ -560,7 +560,7 @@
   {
     "type": "get",
     "url": "/pesquisa/notas",
-    "title": "Get media from analists",
+    "title": "Get media from all the analists.",
     "group": "Pesquisa",
     "success": {
       "fields": {
@@ -599,7 +599,7 @@
   {
     "type": "get",
     "url": "/pesquisa/:quemTeAtendeu",
-    "title": "Get pesquisas from that analist",
+    "title": "Get pesquisa from an analista by 'quemTeAtendeu' params.",
     "group": "Pesquisa",
     "parameter": {
       "fields": {
@@ -651,7 +651,7 @@
   {
     "type": "get",
     "url": "/pesquisa/:quemTeAtendeu/nota",
-    "title": "Get media from analists",
+    "title": "Get media from an specific analist.",
     "group": "Pesquisa",
     "parameter": {
       "fields": {
@@ -768,7 +768,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n\"status\": 200,\n\"message\": \"Pesquisa criada com sucesso!\",\n}",
+          "content": "    HTTP/1.1 200 OK\n  {\n    \"status\": 200,\n    \"message\": \"Pesquisa criada com sucesso!\",\n    \"body\": {\n        \"email\": \"teacher_sil@gmail.com\",\n        \"quemTeAtendeu\": \"Junior\",\n        \"notaAtendimento\": 8,\n        \"voltariaFazerNegocio\": true,\n        \"indicariaParaAmigo\": true,\n        \"createdAt\": \"2019-12-16T02:49:46.350Z\",\n        \"updatedAt\": \"2019-12-16T02:49:46.350Z\",\n        \"__v\": 0,\n        \"id\": \"5df6f0caa7abbf0ef8c26214\"\n    }\n}",
           "type": "json"
         }
       ]

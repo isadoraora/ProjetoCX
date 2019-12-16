@@ -15,14 +15,15 @@ module.exports = {
         CLIENTE_FETCHED : 'Pesquisa realizada com sucesso!',
         DUPLICATE_EMAIL: 'Este email já está sendo utilizado',
         USER_NOT_FOUND: 'Analista não localizado!',
-        USER_FOUND: 'Atendente localizado com sucesso!',
-        USER_UPDATED: 'Usuário atualizado com sucesso!',
-        USER_DELETED: 'Usuário deletado!',
+        USER_FOUND: 'Analista localizado com sucesso!',
+        USER_UPDATED: 'Analista atualizado com sucesso!',
+        USER_DELETED: 'Analista deletado!',
         CLIENT_UPDATED : 'Cliente atualizado!',
         CLIENT_NOT_UPDATED : 'Cliente não atualizado, tente novamente!',
         CLIENT_DELETED: 'Cliente deletado!',
         CLIENT_NOT_FOUND: 'Cliente não localizado!',
-        INVALID_PASSWORD: 'Senha incorreta!'
+        INVALID_PASSWORD: 'Senha incorreta!',
+        INVALID_EMAIL : 'Email não registrado!'
     },
     requestValidationMessage: {
         BAD_REQUEST: 'Campos inválidos.',
