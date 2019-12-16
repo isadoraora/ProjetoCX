@@ -22,10 +22,21 @@ router.post('/',
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {
+ *   {
     "status": 200,
     "message": "Pesquisa criada com sucesso!",
+    "body": {
+        "email": "teacher_sil@gmail.com",
+        "quemTeAtendeu": "Junior",
+        "notaAtendimento": 8,
+        "voltariaFazerNegocio": true,
+        "indicariaParaAmigo": true,
+        "createdAt": "2019-12-16T02:49:46.350Z",
+        "updatedAt": "2019-12-16T02:49:46.350Z",
+        "__v": 0,
+        "id": "5df6f0caa7abbf0ef8c26214"
     }
+}
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 DUPLICATE_EMAIL
@@ -35,10 +46,10 @@ router.post('/',
  *     }
  */
 
-//get Nota de todos os analistas 
+//get media de todos os analistas 
 router.get('/notas', pesquisaController.getMediaAnalistas);
 /**
- * @api {get} /pesquisa/notas Get media from analists
+ * @api {get} /pesquisa/notas Get media from all the analists.
  * @apiGroup Pesquisa
  *
  * @apiSuccess {String} status Mensagem de acesso autorizado.
@@ -72,7 +83,7 @@ router.get('/notas', pesquisaController.getMediaAnalistas);
 //get pesquisa de um analista pelo 'quemTeAtendeu'
 router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
 /**
- * @api {get} /pesquisa/:quemTeAtendeu Get pesquisas from that analist
+ * @api {get} /pesquisa/:quemTeAtendeu Get pesquisa from an analista by 'quemTeAtendeu' params.
  * @apiGroup Pesquisa
 * @apiParam {:quemTeAtendeu} user being evaluated
  *
@@ -108,7 +119,7 @@ router.get('/:quemTeAtendeu', pesquisaController.getAnalistaByNameFromPesquisa)
 //get nota do analista
 router.get('/:quemTeAtendeu/nota', pesquisaController.getNotaFromAnalista);
 /**
- * @api {get} /pesquisa/:quemTeAtendeu/nota Get media from analists
+ * @api {get} /pesquisa/:quemTeAtendeu/nota Get media from an specific analist.
  * @apiGroup Pesquisa
   * @apiParam {:quemTeAtendeu} user being evaluated
  *
