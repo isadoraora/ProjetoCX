@@ -38,7 +38,7 @@ router.post('/',
 //get Nota de todos os analistas 
 router.get('/notas', pesquisaController.getMediaAnalistas);
 /**
- * @api {get} /pesquisa/notas Get notas from analists
+ * @api {get} /pesquisa/notas Get media from analists
  * @apiGroup Pesquisa
  *
  * @apiSuccess {String} status Mensagem de acesso autorizado.
@@ -53,6 +53,11 @@ router.get('/notas', pesquisaController.getMediaAnalistas);
             "_id": "5df07cdd5451f923cce6499f",
             "Nome": "João",
             "Nota": 10
+        },
+        {
+            "_id": "5df07cdd5451f923cce6499f",
+            "Nome": "Andressa",
+            "Nota": 9.5
         }
  *
  * @apiErrorExample Error-Response:

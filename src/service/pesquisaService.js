@@ -30,20 +30,15 @@ module.exports.getAnalistaByNameFromPesquisa = async ({ quemTeAtendeu }) => {
 //get nota de um analista passando o nome dele como params
 module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) => {
     try {
-
-        let analista = await Pesquisa.find({ quemTeAtendeu })
-        if (!analista) {
-            throw new Error(constants.clienteAnalistaMessage.USER_NOT_FOUND)
-        }
         const nota = await Pesquisa.find({ quemTeAtendeu }, { notaAtendimento: 1 })
         const calculaNota = await Pesquisa.aggregate([
             { $match: { quemTeAtendeu: quemTeAtendeu } },
             {
                 $group:
                 {
-                    _id: quemTeAtendeu,
+                    "_id": quemTeAtendeu,
                     Media: { $avg: "$notaAtendimento" },
-                    quantidadePesquisas: { $sum: 1 }
+                    QtidadePesquisas: { $sum: 1 }
                 }
             }
         ])
@@ -56,22 +51,21 @@ module.exports.getNotaFromAnalista = async ({ quemTeAtendeu, notaAtendimento }) 
 
 }
 //get media de cada analista 
-module.exports.getMediaAnalistas = async ({ quemTeAtendeu, notaAtendimento }) => {
+module.exports.getMediaAnalistas = async function () {
     try {
-        const pesquisa = await Pesquisa.aggregate([
+        const calculaMedia = await Pesquisa.aggregate([
             {
-                $project: {
-                    Nome: "$quemTeAtendeu",
-                    Nota:{$avg: "$notaAtendimento"}
+                "$group": {
+                    "_id": "$quemTeAtendeu",
+                    "Media": { $avg: "$notaAtendimento" },
+                    "QtdadePesquisas": { "$sum": 1 }
                 }
+
             }
         ])
-        return pesquisa;
+        return calculaMedia
     } catch (error) {
-        console.log('Algo deu errado: Service : getNotaFromAnalistas', error)
+        console.log('Algo deu errado: Service : getMediaAnalistas', error)
         throw new Error(error)
     }
-
 }
-// const atendente = await Pesquisa.distinct("quemTeAtendeu" )
-//         return atendente;

@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\":\"isa.mdeo@gmail.com\",\n\t\"senha\":\"isaisa\",\n\t\"nome\": \"Isadora\",\n\t\"cpf\":38456722855\n}",
+					"raw": "{\n\t\"nome\":\"Silvana Baptista\",\n\t\"cpf\":\"27654633544\",\n\t\"email\":\"teachersil@gmail.com\",\n\t\"senha\":\"silbruno\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,79 +55,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\":\"isa.mdeo@gmail.com\",\n\t\"senha\":\"isaisa\",\n\t\"nome\": \"Isadora\",\n\t\"cpf\":38456722855\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3002/cliente/signup",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"cliente",
-						"signup"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "LoginCliente",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"email\":\"isa.mdeo@gmail.com\",\n\t\"senha\":\"isaisa\",\n\t\"nome\": \"Isadora\",\n\t\"cpf\":38456722855\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3002/cliente/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"cliente",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CadastroAnalista",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"user\":\"gatao\",\n\t\"password\":\"5555\"\n}",
+					"raw": "{\n\"user\":\"Junior\",\n\"password\":\"juninho2987\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +78,7 @@
 			"response": []
 		},
 		{
-			"name": "LoginAnalista",
+			"name": "LoginCliente",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -163,7 +91,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\":\"isa.mdeo@gmail.com\",\n\t\"senha\":\"isaisa\",\n\t\"nome\": \"Isadora\",\n\t\"cpf\":38456722855\n}",
+					"raw": "{\n\t\"email\":\"cthomaz@gmail.com\",\n\t\"senha\":\"135246c@\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -186,20 +114,55 @@
 			"response": []
 		},
 		{
-			"name": "ListaTodoCliente",
+			"name": "LoginAnalista",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\":\"Nono\",\n\"password\":\"au45681ez\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3002/cliente/",
+					"raw": "http://localhost:3002/analista/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3002",
 					"path": [
-						"cliente",
-						""
+						"analista",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListaTodoCliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"cliente"
 					]
 				}
 			},
@@ -239,7 +202,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\":\"isa.mdeo@gmail.com\"\n}",
+					"raw": "{\n\t\"email\":\"ameixa@gmail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -247,7 +210,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/cliente/5def1ce5b8f1f2068412cb82",
+					"raw": "http://localhost:3002/cliente/5df676eb7bb79d1f841dd76e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -255,7 +218,7 @@
 					"port": "3002",
 					"path": [
 						"cliente",
-						"5def1ce5b8f1f2068412cb82"
+						"5df676eb7bb79d1f841dd76e"
 					]
 				}
 			},
@@ -298,9 +261,12 @@
 			"response": []
 		},
 		{
-			"name": "LoginAnalista",
+			"name": "ListaTodoAnalista",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -311,7 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"user\":\"gatao\",\n\t\"password\":\"5555\"\n}",
+					"raw": "{\n\t\"email\":\"marciooliveira@gmail.com\",\n\t\"senha\":\"m4n6i1\",\n\t\"quemTeAtendeu\":\"ozzy\",\n\t\"notaAtendimento\":10,\n\t\"voltariaFazerNegocio\":true,\n\t\"indicariaParaAmigo\":true\n\t\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -319,7 +285,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/analista/login",
+					"raw": "http://localhost:3002/analista/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -327,26 +293,7 @@
 					"port": "3002",
 					"path": [
 						"analista",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListaTodoAnalista",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3002/analista",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"analista"
+						""
 					]
 				}
 			},
@@ -386,7 +333,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"user\":\"isadoraora\"\n}",
+					"raw": "{\n\t\"user\": \"AndreO\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -394,7 +341,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/analista/5def1e4b775b3b23506bb8b7",
+					"raw": "http://localhost:3002/analista/5df67a24cdf3312844a023e0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -402,7 +349,7 @@
 					"port": "3002",
 					"path": [
 						"analista",
-						"5def1e4b775b3b23506bb8b7"
+						"5df67a24cdf3312844a023e0"
 					]
 				}
 			},
@@ -422,7 +369,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"user\":\"isadoraora\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -430,7 +377,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3002/analista/5def1e4b775b3b23506bb8b7",
+					"raw": "http://localhost:3002/analista/5df67a24cdf3312844a023e0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -438,7 +385,7 @@
 					"port": "3002",
 					"path": [
 						"analista",
-						"5def1e4b775b3b23506bb8b7"
+						"5df67a24cdf3312844a023e0"
 					]
 				}
 			},
@@ -494,6 +441,41 @@
 					"port": "3002",
 					"path": [
 						"analista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CriaPesquisa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"marciooliveira@gmail.com\",\n\t\"senha\":\"m4n6i1\",\n\t\"quemTeAtendeu\":\"ozzy\",\n\t\"notaAtendimento\":10,\n\t\"voltariaFazerNegocio\":true,\n\t\"indicariaParaAmigo\":true\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/pesquisa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"pesquisa"
 					]
 				}
 			},

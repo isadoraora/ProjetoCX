@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 //caracteristicas customer
 // instancia um novo schema, que representa o objeto customer - utilizado no model
 const clienteSchema = new mongoose.Schema({
+    nome: String,
+    cpf: String,
     email: String,
     senha: String
 },

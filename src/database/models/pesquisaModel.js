@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 //caracteristicas da pesquisa
 const PesquisaSchema = new mongoose.Schema({
     email: { type: String },
-    senha: { type: String },
     quemTeAtendeu: { type: String },
     notaAtendimento: { type: Number },
     voltariaFazerNegocio: { type: Boolean },

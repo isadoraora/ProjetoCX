@@ -16,29 +16,33 @@ router.post('/signup',
  * @apiParam (Request Body) {String} password Password do analista.
  *
  * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *   {
+ *  {
     "status": 200,
     "message": "Signup com sucesso!",
     "body": {
-        "result": {
-            "_id": "5df57d28832b5a2c74360efb",
-            "email": "marcio@gmail.com",
-            "senha": "$2a$12$.eqJuc7brYzyYHHinw3nU.fpsUaaa7623ESvAGhEW.3Z4qA6wsqy6",
-            "createdAt": "2019-12-15T00:24:08.309Z",
-            "updatedAt": "2019-12-15T00:24:08.309Z",
-            "__v": 0
-        },
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzYzNjk0NDgsImV4cCI6MTU3NjQ1NTg0OH0.WZ5CoP4gGdomTj7AbOVwLwSYw5iRhCALimdzw7fjZdQ"
+        "user": "andreO",
+        "password": "$2a$12$UtU7F7xbx7c88s0OT7G1tOx4629qg9eZf0dAtCh1N7Ox9Lue7IiMe",
+        "createdAt": "2019-12-15T18:23:32.815Z",
+        "updatedAt": "2019-12-15T18:23:32.815Z",
+        "__v": 0,
+        "id": "5df67a24cdf3312844a023e0"
     }
 }
  *
  * @apiErrorExample Error-Response:
- *     HTTP/1.1 400 DUPLICATE_EMAIL
+ *     HTTP/1.1 400 Campos vazios
  *  {
     "status": 400,
-    "message": "Error: Este email já está sendo utilizado",
- *     }
+    "message": "Campos inválidos.",
+    "body": [
+        {
+            "error": "\"password\" is not allowed to be empty",
+            "path": [
+                "password"
+            ]
+        }
+    ]
+}
  */
 
 router.post('/login',
@@ -58,15 +62,7 @@ router.post('/login',
     "status": 200,
     "message": "Login com sucesso!",
     "body": {
-        "cliente": {
-            "_id": "5df57d28832b5a2c74360efb",
-            "email": "marcio@gmail.com",
-            "senha": "$2a$12$.eqJuc7brYzyYHHinw3nU.fpsUaaa7623ESvAGhEW.3Z4qA6wsqy6",
-            "createdAt": "2019-12-15T00:24:08.309Z",
-            "updatedAt": "2019-12-15T00:24:08.309Z",
-            "__v": 0
-        },
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZjU3ZDI4ODMyYjVhMmM3NDM2MGVmYiIsImlhdCI6MTU3NjM2OTU3NSwiZXhwIjoxNTc2NDU1OTc1fQ.1M8M80HFoYKgP7-gqNKchEparCM-vBNcOC25KRrVjPc"
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZjY3YWI4ZDM1ZDAzMmQ4MDEwMGE3YSIsImlhdCI6MTU3NjQzNDM3NywiZXhwIjoxNTc2NTIwNzc3fQ.2Fqjhls2IKDPtSG-ZxRR-4YLrUNs1aytr1qtPnNHvx4"
     }
 }
  *
@@ -140,10 +136,18 @@ router.put('/:id', analistaController.updateAnalist);
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
- *     {
+ *    {
     "status": 200,
     "message": "Analista atualizado com sucesso!",
+    "body": {
+        "user": "AndreO",
+        "password": "$2a$12$UtU7F7xbx7c88s0OT7G1tOx4629qg9eZf0dAtCh1N7Ox9Lue7IiMe",
+        "createdAt": "2019-12-15T18:23:32.815Z",
+        "updatedAt": "2019-12-15T18:34:52.151Z",
+        "__v": 0,
+        "id": "5df67a24cdf3312844a023e0"
     }
+}
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 ID_INVALID
@@ -167,9 +171,17 @@ router.delete('/:id', analistaController.deleteAnalist);
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *      "status": 200,
-        "message": "Analista deletado!",
- *     }
+    "status": 200,
+    "message": "Analista deletado!",
+    "body": {
+        "user": "AndreO",
+        "password": "$2a$12$UtU7F7xbx7c88s0OT7G1tOx4629qg9eZf0dAtCh1N7Ox9Lue7IiMe",
+        "createdAt": "2019-12-15T18:23:32.815Z",
+        "updatedAt": "2019-12-15T18:34:52.151Z",
+        "__v": 0,
+        "id": "5df67a24cdf3312844a023e0"
+    }
+}
  *
  * @apiError IdNotFound The id of the User was not found.
  *

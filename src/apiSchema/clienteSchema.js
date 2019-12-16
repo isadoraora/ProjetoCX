@@ -1,6 +1,8 @@
 const Joi = require('@hapi/joi');
 
 module.exports.signup = Joi.object().keys({
+    nome: Joi.string().required(),
+    cpf: Joi.string().required(),
     email: Joi.string().required(),
     senha: Joi.string().required()
 });

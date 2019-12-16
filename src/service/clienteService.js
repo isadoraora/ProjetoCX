@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 function generateToken(params = {}) {
-    return jwt.sign(params, process.env.SECRET_KEY || 'my-secret-key', { expiresIn: 86400 });
+    return jwt.sign(params, process.env.SECRET_KEY || 'my-secret-key', { expiresIn: '7d' });
 }
 
 module.exports.signup = async ({ email, senha }) => {
