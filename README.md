@@ -9,28 +9,39 @@ Decidi então trazer esse case real pro meu projeto final. Minha API faz cadastr
 Isso faz com que o próprio analista insista ao cliente que o ajude, respondendo uma breve pesquisa. 
 
 Rotas/EndPoints
+
 POST /ciente/signup Rota que realiza o registro de um novo cliente.
+
 POST /analista/signup Rota que realiza o registro de um novo analista de atendimento.
+
 POST /pesquisa/ Rota que cria e salva uma pesquisa, respondida apenas pelo cliente. 
 
 POST /cliente/login Rota que realiza a validação das informações geradas no signup e então loga o cliente.
+
 POST /analista/login Rota que realiza a validação das informações geradas no signup e então loga o analista.
 
 GET /cliente Rota que retorna todos os clientes cadastrados no sistema.
+
 GET /analista Rota que retorna todos os analistas cadastrados no sistema.
 
 GET /cliente/:id Rota para retornar apenas o cliente do id passado como parâmetro na URL.
+
 GET /analista/:user Rota para retornar apenas o analista com o user passado na URL.
+
 GET /pesquisa/:quemTeAtendeu Rota para buscar a pesquisa de um analista passando como parâmetro: 'quemTeAtendeu'.
+
 GET /pesquisa/:quemTeAtendeu/nota Rota para trazer a média do analista passado no parâmetro, e quantidade de pesquisas respondidas sobre atendimentos dele.
 
 PUT /cliente/:id Rota que atualiza algum item dentro do schema do cliente.
+
 PUT /analista/:id Rota que atualiza algum item dentro do schema do analista.
 
 DELETE /cliente/:id Rota que deleta um item, baseada no id.
+
 DELETE /analista/:id Rota que deleta um item, baseada no id. 
 
 Suporte, Linguagens e Frameworks:
+
 NodeJS
 API REST
 MongoDB
@@ -43,6 +54,7 @@ Mongoose
 Nodemon
 
 Sobre mim :)
+
 Isadora Mendonça de Oliveira, formada em Tradução e Interpretação lá em 2010, e que em 2015 descobriu sua paixão em códigos. Cursei Análise e Desenvolvimento, mas acabei indo para a área de Business Intelligence. Neste ano resolvi migrar de fato para a área de backend. Estudante da {reprograma} e nas hora vagas estudando front-end para em um futuro próximo me tornar Desenvolvedora Fullstack. 
 
 Caso tenha algum dúvida sobre meu projeto, ou sobre minha trajetória => isa.mdeo@gmail.com
