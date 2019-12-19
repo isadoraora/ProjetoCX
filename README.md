@@ -44,7 +44,7 @@ DELETE /analista/:id Rota que deleta um item, baseada no id.
 
 NodeJS
 API REST
-MongoDB
+MongoDB Atlas
 Postman
 Robo 3T
 GitHub
@@ -52,6 +52,7 @@ Express
 Token JWT
 Mongoose
 Nodemon
+Heroku
 
 #### Sobre mim :)
 
