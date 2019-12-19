@@ -1,6 +1,7 @@
 Projeto Final | Back-end | {reprograma} + Mercado Livre | Dezembro de 2019
 
 Objetivo
+
 Há algum tempo, quando ainda não sabia nada de códigos, trabalhei em uma empresa que tinha 3 canais de Customer Experience, chat, telefone e e-mail. Nos três a análise dos indicadores, inclusive do NPS, era gerado de forma manual, em uma planilha Excel. 
 Ao longo do dia as coordenadoras de cada departamento gritavam as notas dos analistas de atendimento, que elas mesmo extraíam das ferramentas de telecom, e tratavam no Excel. Muitas vezes, muitas mesmo, esse número não batia e era aquela loucura. 
 Além disso era desconfortável ouvir a nota de cada um deles, e as broncas que levavam na frente de todos. 
