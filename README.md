@@ -1,4 +1,4 @@
-Projeto Final | Back-end | {reprograma} + Mercado Livre | Dezembro de 2019
+###Projeto Final | Back-end | {reprograma} + Mercado Livre | Dezembro de 2019
 
 Objetivo
 
@@ -53,7 +53,7 @@ Token JWT
 Mongoose
 Nodemon
 
-Sobre mim :)
+####Sobre mim :)
 
 Isadora Mendonça de Oliveira, formada em Tradução e Interpretação lá em 2010, e que em 2015 descobriu sua paixão em códigos. Cursei Análise e Desenvolvimento, mas acabei indo para a área de Business Intelligence. Neste ano resolvi migrar de fato para a área de backend. Estudante da {reprograma} e nas hora vagas estudando front-end para em um futuro próximo me tornar Desenvolvedora Fullstack. 
 
